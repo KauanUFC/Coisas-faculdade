@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script src="/ReversaMesa/Cliente/clienteFetch.js" defer></script>     
+    <script src="/ReversaMesa/Mesas/mesaFetch.js" defer></script>
+    <script src="/ReversaMesa/Reservas/reservasFetch.js" defer></script>
+    <script src="/ReversaMesa/Agendamentos/agendaFetch.js" defer></script>
+    <script src="/ReversaMesa/Pedidos/pedidosFetch.js" defer></script>
+    
+    <title>MySQLBancodeDados1</title>
+</head>
+
+<body>
+
+    <!--------------------------------------------------------------------------->
+    <h1>Insert Clientes</h1>
+    <!--------------------------------------------------------------------------->
+    <form id="insert_Form">
+        <label for="INS_nome">Name:</label>
+        <input type="text" id="INS_nome" value="" name="nome" required>
+        <br><br>
+      
+        <label for="INS_telefone">Phone:</label>
+        <input type="tel" id="INS_telefone" value="" name="telefone" required>
+        <br><br>
+
+        <label for="INS_email">Email:</label>
+        <input type="email" id="INS_email" value="" name="email" required>
+        <br><br>
+
+        <button type="submit">Insert Data</button>
+    </form>
+
+    <!--------------------------------------------------------------------------->
+    <h1>Update Clientes</h1>
+    <!--------------------------------------------------------------------------->
+    <form id="updateForm">
+        <label for="UpD_id">ID:</label>
+        <input type="text" id="UpD_id" name="id" required><br><br>
+
+        <label for="UpD_nome">Name:</label>
+        <input type="text" id="UpD_nome" name="nome" required><br><br>
+
+        <label for="UpD_telefone">Phone:</label>
+        <input type="text" id="UpD_telefone" name="telefone" required><br><br>
+
+        <label for="UpD_email">Email:</label>
+        <input type="email" id="UpD_email" name="email" required><br><br>
+
+        <button type="submit">Update Data</button>
+    </form>
+
+    <!-------------------------------SELECT-------------------------------------------->
+    <h1>Select Clientes</h1>
+    <!--------------------------------------------------------------------------->
+    <button onclick="fetchDataSelect()">SELECT Data</button>    
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Cliente_ID</th>
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody id="data-table">
+        </tbody>
+    </table>
+
+    <!--------------------Delete------------------------------------------------------->
+    <h1>Tirar Cliente</h1>
+    <!--------------------------------------------------------------------------->
+    <form id="deleteForm">
+        <label for="DEL_id">ID:</label>
+        <input type="text" id="DEL_id" name="id" required><br><br>
+        <button type="submit">Delete Data</button> <!-- Changed type to "button" -->
+    </form>
+
+    <div>...............................................................</div>
+    <div>...........................MESAS..............................</div>
+    <div>...............................................................</div>
+
+<!--------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------->
+<!-------------MESAS---------------------------------------->
+
+
+        <!-------------------------------SELECT_MESAS-------------------------------------------->
+        
+        <h1>Insert Mesas</h1>
+    <!--------------------------------------------------------------------------->
+    <form id="insert_Form_Mesas">
+        <label for="INS_nome">Mesas:</label>
+        <br><br>
+
+        <label for="INS_telefone">capacidade:</label>
+        <input type="tel" id="INS_capacidade" value="" name="telefone" required>
+        <br><br>
+
+        <label for="INS_email">Localizacao:</label>
+        <input type="text" id="INS_localizacao" value="" name="email" required>
+        <br><br>
+
+        <button type="submit">Insert Data</button>
+    </form>
+    
+    <!--------------------------------------------------------------------------->
+        
+
+    <h1>Update Mesa</h1>
+    <!-------------------------------UPDATE------------------------------------->
+    <form id="updateForm_Mesa">
+        <label for="UpD_id_Mesa">ID:</label>
+        <input type="text" id="UpD_id_Mesa" name="id" required><br><br>
+
+        <label for="UpD_nome">capacidade:</label>
+        <input type="text" id="UpD_capacidade" name="capacidade" required><br><br>
+
+        <label for="UpD_telefone">localizacao:</label>
+        <input type="text" id="UpD_localizacao" name="localizacao" required><br><br>
+
+        <button type="submit">Update Data</button>
+    </form>
+
+    <!-------------------------------SELECT-------------------------------------------->
+        
+        <h1>Select Mesas</h1>
+        <!--------------------------------------------------------------------------->
+        <button onclick="fetchDataSelect_Mesas()"> SELECT Data </button>    
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Mesas_ID</th>
+                    <th>capacidade</th>
+                    <th>localizacao</th>
+                    
+                </tr>
+            </thead>
+            <tbody id="data-table_mesas">
+            </tbody>
+        </table>
+
+
+    <!-----------------DELETE--------------------------------------------------->
+        <h1>Tirar Mesa</h1>
+        <form id="deleteForm_mesa">
+            <label for="DEL_id_mesa">ID:</label>
+            <input type="text" id="DEL_id_mesa"  required><br><br>
+            <button type="submit">Delete Mesa</button> <!-- Changed type to "button" -->
+        </form>
+    
+<!--------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------->
+<!-------------Reservas---------------------------------------->
+
+
+<div>...............................................................</div>
+<div>...........................RESERVA..............................</div>
+<div>...............................................................</div>
+
+        <!-------------------------------Reservas-------------------------------------------->
+         <!-------------Reservas---------------------------------------->
+    <h1>Select Reservas</h1>
+    
+    <button onclick="fetchDataSelect_Reservas()">SELECT Data</button>    
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Reserva_ID</th>
+                <th>Cliente_ID</th>
+                <th>Mesa_ID</th>
+                <th>Data_Hora</th>
+                <th>Numero_Pessoas</th>
+            </tr>
+        </thead>
+        <tbody id="data-reserva">
+        </tbody>
+    </table>
+
+
+    
+    <!-----------------DELETE--------------------------------------------------->
+    
+    <h1>Tirar reserva</h1>
+
+    <form id="deleteForm_reservas">
+        <label for="DEL_id_reservas">ID:</label>
+        <input type="text" id="DEL_id_reservas"  required><br><br>
+        <button type="submit">Delete reserva</button> 
+    </form>
+
+    <!--------------------------------------------------------------------------->
+
+
+    <h1>Insert Reservas</h1>
+    <form id="insert_Form_Reservas">
+        
+        <label for="INS_Data_hora">Data:hora</label>
+        <input type="text" id="INS_Data_hora" value="" name="data_hora" required>
+        <br><br>
+
+        <label for="INS_numero_pessoas">Numero de Pessoas:</label>
+        <input type="text" id="INS_numero_pessoas" value="" name="numero_pessoas" required>
+        <br><br>
+
+        <label for="INS_cliente_id">Cliente ID:</label>
+        <input type="text" id="INS_cliente_id" value="" name="cliente_id" required>
+        <br><br>
+
+        <label for="INS_mesa_id">Mesa ID:</label>
+        <input type="text" id="INS_mesa_id" value="" name="mesa_id" required>
+        <br><br>
+
+        <button type="submit">Insert Data</button>
+    </form>
+
+
+    <h1>Update Reserva</h1>
+    
+    <form id="updateForm_reserva">
+        <label for="UpD_id_reserva">Reserva ID:</label>
+        <input type="text" id="UpD_id_reserva" name="id" required>
+        <br><br>
+
+        <label for="UpD_data_hora_reserva">Data:hora:</label>
+        <input type="text" id="UpD_data_hora_reserva" name="data_hora" required>
+        <br><br>
+
+        <label for="UpD_numero_pessoas_reserva">Numero de Pessoas:</label>
+        <input type="text" id="UpD_numero_pessoas_reserva" name="numero_pessoas" required>
+        <br><br>
+
+    <button type="submit">Update Data</button>
+    </form>
+
+<!--------------------------------------------------------------------------->
+<div>...............................................................</div>
+<div>...........................AGENDAMENTOS..............................</div>
+<div>...............................................................</div>
+
+<h1>Select Agendamentos</h1>
+    
+<button onclick="fetchDataSelect_Agendamentos()">SELECT Data</button>    
+<table border="1">
+    <thead>
+        <tr>
+            <th>Agendamento_ID</th>
+            <th>Reserva_ID</th>
+            <th>status</th>
+            <th>Observacoes</th>
+
+        </tr>
+    </thead>
+    <tbody id="data-agenda">
+    </tbody>
+</table>
+
+
+    
+<h1>Tirar Agenda</h1>
+
+<form id="deleteForm_agenda">
+    <label for="DEL_id_agenda">ID:</label>
+    <input type="text" id="DEL_id_agenda"  required><br><br>
+    <button type="submit">Delete reserva</button> 
+</form>
+
+<!--------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------->
+
+
+<h1>Insert Agenda</h1>
+    <form id="insert_Form_Agenda">
+
+        <label for="INS_agenda">Reserva_ID:</label>
+        <input type="text" id="INS_reserva_agenda" value="" required>
+        <br><br>
+
+        <label for="INS_agenda">Status:</label>
+        <input type="text" id="INS_Status" value="" required>
+        <br><br>
+
+        <label for="INS_agenda">Observacoes:</label>
+        <input type="text" id="INS_Observacoes" value="" required>
+        <br><br>
+
+        <button type="submit">Insert Data</button>
+    </form>
+
+
+    
+    <h1>Update Agendamentos</h1>
+    
+    <form id="updateForm_agenda">
+        <label for="UpD_id_agenda">Agendamento_ID:</label>
+        <input type="text" id="UpD_id_agenda"  required>
+        <br><br>
+
+
+        <label for="UpD_numero_pessoas_agenda">Status:</label>
+        <input type="text" id="UpD_status_agenda"  required>
+        <br><br>
+
+        <label for="UpD_numero_pessoas_agenda">Observacoes:</label>
+        <input type="text" id="UpD_observacoes_agenda"  required>
+        <br><br>
+
+    <button type="submit">Update Data</button>
+    </form>
+
+
+
+    <div>...............................................................</div>
+<div>...........................PEDIDOS..............................</div>
+<div>...............................................................</div>
+
+
+<h1>Select Pedidos</h1>
+    
+<button onclick="fetchDataSelect_Pedidos()">SELECT Data</button>    
+<table border="1">
+    <thead>
+        <tr>
+            <th>Pedido_ID</th>
+            <th>Agendamento_ID</th>
+            <th>Descricao</th>
+            <th>Quantidade</th>
+            <th>Horario_pedido</th>
+
+        </tr>
+    </thead>
+    <tbody id="data-pedidos">
+    </tbody>
+</table>
+
+
+
+<h1>Tirar Pedido</h1>
+
+<form id="deleteForm_pedido">
+    <label for="DEL_id_pedido">ID:</label>
+    <input type="text" id="DEL_id_pedido"  required><br><br>
+    <button type="submit">Delete reserva</button> 
+</form>
+
+
+
+<h1>Insert Pedido</h1>
+    <form id="insert_Form_pedido">
+
+        <label for="INS_pedidos">Agendamento_ID:</label>
+        <input type="text" id="INS_agendamento_pedido" value="" required>
+        <br><br>
+
+        <label for="INS_agenda">descricao:</label>
+        <input type="text" id="INS_descricao_pedido" value="" required>
+        <br><br>
+
+        <label for="INS_agenda">Quantidade:</label>
+        <input type="text" id="INS_quantidade_pedido" value="" required>
+        <br><br>
+        
+        <label for="INS_agenda">Horario_pedido:</label>
+        <input type="text" id="INS_horario_pedido" value="" required>
+        <br><br>
+
+        <button type="submit">Insert Data</button>
+    </form>
+
+
+
+        
+    <h1>Update Pedido</h1>
+    
+    <form id="updateForm_pedido">
+        <label for="UpD_id_pedido">Pedido_ID:</label>
+        <input type="text" id="UpD_id_pedido"  required>
+        <br><br>
+
+        <label for="UpD_numero_pessoas_agenda">Descricao:</label>
+        <input type="text" id="UpD_descricao_pedido"  required>
+        <br><br>
+
+        <label for="UpD_numero_pessoas_agenda">Quantidade:</label>
+        <input type="text" id="UpD_quantidade_pedido"  required>
+        <br><br>
+
+        <label for="UpD_numero_pessoas_agenda">Horario_pedido:</label>
+        <input type="text" id="UpD_horario_pedido"  required>
+        <br><br>
+
+    <button type="submit">Update Data</button>
+    </form>
+
+
+
+    </body>
+    </html>

@@ -1,0 +1,75 @@
+//anotacoes do banco de dados;
+
+CREATE TABLE Clientes (
+    cliente_id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL,
+    telefone VARCHAR(15),
+    email VARCHAR(100)
+);
+
+CREATE TABLE Mesas (
+    mesa_id INT PRIMARY KEY AUTO_INCREMENT,
+    capacidade INT NOT NULL,
+    localizacao VARCHAR(100)
+);
+
+CREATE TABLE Reservas (
+    reserva_id INT PRIMARY KEY AUTO_INCREMENT,
+    cliente_id INT,
+    mesa_id INT,
+    data_hora DATETIME NOT NULL,
+    numero_pessoas INT NOT NULL,
+    FOREIGN KEY (cliente_id) REFERENCES Clientes(cliente_id),
+    FOREIGN KEY (mesa_id) REFERENCES Mesas(mesa_id)
+);
+
+CREATE TABLE Agendamentos (
+    agendamento_id INT PRIMARY KEY AUTO_INCREMENT,
+    reserva_id INT,
+    status VARCHAR(20) NOT NULL,
+    observacoes TEXT,
+    FOREIGN KEY (reserva_id) REFERENCES Reservas(reserva_id)
+);
+
+CREATE TABLE Pedidos (
+    pedido_id INT PRIMARY KEY AUTO_INCREMENT,
+    agendamento_id INT,
+    descricao VARCHAR(255) NOT NULL,
+    quantidade INT NOT NULL,
+    horario_pedido DATETIME NOT NULL,
+    FOREIGN KEY (agendamento_id) REFERENCES Agendamentos(agendamento_id)
+);
+////////
+tabela para o restaurante 
+////////
+>>bootstrap
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td colspan="2">Larry the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>

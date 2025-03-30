@@ -1,0 +1,18 @@
+# Ignore node_modules directory
+node_modules/
+
+# Ignore package-lock.json (optional, if you don't want to track it)
+package-lock.json
+
+# Ignore specific files
+sketch.js
+test.js
+test2.js
+anotacoes.txt
+
+# Ignore zip files
+*.zip
+
+# Ignore system files (optional, for safety)
+.DS_Store
+Thumbs.db

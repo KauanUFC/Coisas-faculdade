@@ -1,0 +1,24 @@
+Insert into <tabela> [<colunas(s)>]
+values ()
+
+criar um usuario e um usuario pode ter varios telefones:
+
+dentro do insert no values pode colocar o select * from blablabla
+para colocar a informacao que ja possue dentro do banco de dados;
+
+ex. uma loja ter dentro do insert ter update dentro da quantidade de 
+produtos que foram vendidos 
+
+insert into <tabela> [<coluna(s)>] select <coluna(s)> from tabela_x
+
+update empregado set salario = salario + 100 
+=> ele altera o valor de uma coluna
+
+delete from <tabela> [where <condição>]
+
+delete from empregado where departamento_id is null
+
+delete from produto where categori_id = 
+(select a.id from categori as a
+where a.descricao = 'informatica') AND preco < 30
+
