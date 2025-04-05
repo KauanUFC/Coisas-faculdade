@@ -1,0 +1,26 @@
+O software deve ser compativel com navegadores.
+
+Deve exibir o resultado em ate 3 segundos em operações que envolvam bando de dados.
+
+Os dados dos clientes devem ser mantidos criptografados dentro do bando de dados.
+
+requisitos de dominios sao gerdados do domino da aplicação e refletem em toda a aplicação.
+
+requisitos
+Entrevistas
+questionarios 
+observações e visita as instalações 
+demonstrações pesquisa extena 
+analisa da documentação
+JAD (Joint App Design) -IBM
+BrainStorm
+Brain Writing
+Projeto de arquitetura 
+Design System. 
+Crie Diagrama
+
+
+Projeto conciste na execução de atividades que visam a criação de um produto
+Processo é um conjunto de passos para a execução de projetos.
+
+requisitos

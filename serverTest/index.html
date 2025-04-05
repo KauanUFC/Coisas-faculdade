@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+     
+</head>
+<body>
+
+    <p>aosdisabdioasd</p>
+    <input id="input" type="text">   
+    
+    <script>
+
+const input = document.getElementById('input');
+input.addEventListener('keypress', (e)=>{
+  //e.preventDefault();
+
+    if(e.key==='Enter'){
+           //console.log(input.value.trim());
+    const inputValue = input.value.trim();               
+
+fetch('http://localhost:3000/input',{
+    method:'POST',
+    headers:{
+        'Content-Type':'application/json'
+    },
+    body: JSON.stringify({ input: inputValue }),
+})
+
+           input.value='';
+         }
+});
+    </script>
+
+
+</body>
+</html>
