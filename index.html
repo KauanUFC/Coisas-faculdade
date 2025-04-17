@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Real-Time ISS Information</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h1 class="text-center">
+        Real-Time International Space Station (ISS) Information
+      </h1>
+      <div id="iss-info" class="mt-4"></div>
+    </div>
+
+    <script>
+      function fetchISSData() {
+        fetch("https://api.wheretheiss.at/v1/satellites/25544")
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
+            }
+            return response.json();
+          })
+          .then((data) => {
+            const infoDiv = document.getElementById("iss-info");
+            infoDiv.innerHTML = `
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">ISS Details</h5>
+                            <p class="card-text"><strong>ID:</strong> ${data.id}</p>
+                            <p class="card-text"><strong>Name:</strong> ${data.name}</p>
+                            <p class="card-text"><strong>Altitude:</strong> ${data.altitude} km</p>
+                            <p class="card-text"><strong>Velocity:</strong> ${data.velocity} km/h</p>
+                            <p class="card-text"><strong>Position:</strong></p>
+                            <ul>
+                                <li><strong>Latitude:</strong> ${data.latitude}</li>
+                                <li><strong>Longitude:</strong> ${data.longitude}</li>
+                            </ul>
+                            <p class="card-text"><strong>Visibility:</strong> ${data.visibility}</p>
+                        </div>
+                    </div>
+                `;
+          })
+          .catch((error) => {
+            console.error(
+              "There was a problem with the fetch operation:",
+              error
+            );
+          });
+      }
+
+      // Fetch data every 5 seconds
+      setInterval(fetchISSData, 3000);
+      // Initial fetch
+      fetchISSData();
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+  </body>
+</html>
